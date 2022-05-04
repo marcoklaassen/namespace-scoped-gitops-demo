@@ -1,7 +1,7 @@
 kind: ArgoCD
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: app-shopping-argocd
+  name: app-stock-argocd
   namespace: app-stock-commons
 spec:
   controller:

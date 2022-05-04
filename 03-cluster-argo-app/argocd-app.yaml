@@ -33,6 +33,8 @@ spec:
   source:
     path: 04-app-argo-cd-config
     repoURL: https://github.com/marcoklaassen/namespace-scoped-gitops-demo.git
+    directory:
+      recurse: true
   syncPolicy:
     automated:
       prune: true
