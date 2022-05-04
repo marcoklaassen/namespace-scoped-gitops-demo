@@ -1,0 +1,29 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: app-shopping-backend-argocd-controller
+  namespace: app-shopping-backend
+rules:
+- apiGroups:
+  - "*"
+  resources:
+  - "*"
+  verbs:
+  - Get
+  - List
+  - Watch
+  - Patch
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: app-shopping-backend-argocd-rolebinding
+  namespace: app-shopping-backend
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: app-shopping-backend-argocd-controller
+subjects:
+- kind: ServiceAccount
+  name: app-shopping-argocd-argocd-application-controller
+  namespace: app-shopping-commons
