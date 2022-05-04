@@ -33,6 +33,7 @@ spec:
   source:
     path: argocd
     repoURL: http://gogs-gogs.apps.ocp4.klaassen.click/mklaasse/stock-app-config.git
+    targetRevision: main
   syncPolicy:
     automated:
       prune: true
