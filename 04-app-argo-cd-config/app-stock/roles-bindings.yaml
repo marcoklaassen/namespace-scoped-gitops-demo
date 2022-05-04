@@ -9,10 +9,7 @@ rules:
   resources:
   - "*"
   verbs:
-  - Get
-  - List
-  - Watch
-  - Patch
+  - "*"
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
