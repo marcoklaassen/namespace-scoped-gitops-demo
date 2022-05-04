@@ -31,7 +31,7 @@ spec:
     kind: Route
   project: default
   source:
-    path: shopping-app-config/argocd
+    path: argocd
     repoURL: http://gogs-gogs.apps.ocp4.klaassen.click/mklaasse/shopping-app-config.git
   syncPolicy:
     automated:
