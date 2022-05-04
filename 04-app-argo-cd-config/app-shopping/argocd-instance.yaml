@@ -1,17 +1,54 @@
-kind: ArgoCD
 apiVersion: argoproj.io/v1alpha1
+kind: ArgoCD
 metadata:
   name: app-shopping-argocd
   namespace: app-shopping-commons
 spec:
-  controller:
+  server:
+    autoscale:
+      enabled: false
+    grpc:
+      ingress:
+        enabled: false
+    ingress:
+      enabled: false
     resources:
       limits:
-        cpu: 2000m
-        memory: 2048Mi
+        cpu: 500m
+        memory: 256Mi
+      requests:
+        cpu: 125m
+        memory: 128Mi
+    route:
+      enabled: true
+    service:
+      type: ''
+  grafana:
+    enabled: false
+    ingress:
+      enabled: false
+    route:
+      enabled: false
+  prometheus:
+    enabled: false
+    ingress:
+      enabled: false
+    route:
+      enabled: false
+  initialSSHKnownHosts: {}
+  rbac:
+    defaultPolicy: ''
+    policy: |
+      g, system:cluster-admins, role:admin
+    scopes: '[groups]'
+  repo:
+    resources:
+      limits:
+        cpu: '1'
+        memory: 1Gi
       requests:
         cpu: 250m
-        memory: 1024Mi
+        memory: 256Mi
   dex:
     openShiftOAuth: true
     resources:
@@ -30,11 +67,8 @@ spec:
       requests:
         cpu: 250m
         memory: 128Mi
-  rbac:
-    defaultPolicy: ''
-    policy: |
-      g, system:cluster-admins, role:admin
-    scopes: '[groups]'
+  tls:
+    ca: {}
   redis:
     resources:
       limits:
@@ -43,21 +77,13 @@ spec:
       requests:
         cpu: 250m
         memory: 128Mi
-  repo:
+  controller:
+    processors: {}
     resources:
       limits:
-        cpu: 1000m
-        memory: 1024Mi
+        cpu: '2'
+        memory: 2Gi
       requests:
         cpu: 250m
-        memory: 256Mi
-  server:
-    resources:
-      limits:
-        cpu: 500m
-        memory: 256Mi
-      requests:
-        cpu: 125m
-        memory: 128Mi
-    route:
-      enabled: true
+        memory: 1Gi
+    sharding: {}
