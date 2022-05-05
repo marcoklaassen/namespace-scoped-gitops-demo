@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: shopping-backend
+    app.kubernetes.io/part-of: app-shopping-backend
+  name: shopping-backend
+  namespace: app-shopping-backend
+spec:
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app.kubernetes.io/name: shopping-backend
+    app.kubernetes.io/part-of: app-shopping-backend
+status:
+  loadBalancer: {}

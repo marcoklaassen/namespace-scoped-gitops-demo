@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: stock-application
+    app.kubernetes.io/part-of: app-stock-application
+  name: stock-application
+  namespace: app-stock-application
+spec:
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app.kubernetes.io/name: stock-application
+    app.kubernetes.io/part-of: app-stock-application
+status:
+  loadBalancer: {}
